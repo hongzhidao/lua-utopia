@@ -42,6 +42,9 @@ local root_members = {
         type = CONF.ARRAY,
         validator = conf_vldt_deny,
     },
+    uri = {
+        type = CONF.STRING,
+    },
 };
 
 

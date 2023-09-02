@@ -16,6 +16,10 @@ function _M.handle(r)
     if (action.deny_list) then
         http_access_handle(r);
     end
+
+    if (action.uri) then
+        r.uri = action.uri;
+    end
 end
 
 
@@ -27,6 +31,10 @@ function _M.init_conf(value)
             table.insert(deny_list, cidr);
         end
         action.deny_list = deny_list;
+    end
+
+    if (value.uri) then
+        action.uri = value.uri;
     end
 end
 

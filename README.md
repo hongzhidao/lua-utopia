@@ -5,7 +5,7 @@ Usage
 ===========
 ```
 1. copy nginx.conf
-2. copy lua-utopia
+2. copy utopia
 ```
 
 Test

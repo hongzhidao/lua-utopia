@@ -63,6 +63,15 @@ local function conf_vldt_deny(value)
 end
 
 
+local function conf_vldt_set_headers(value)
+    for key, val in pairs(value) do
+        if (type(val) ~= "string") then
+            return "set header value must be a string";
+        end
+    end
+end
+
+
 local root_members = {
     deny = {
         type = CONF.ARRAY,
@@ -70,6 +79,10 @@ local root_members = {
     },
     uri = {
         type = CONF.STRING,
+    },
+    set_headers = {
+        type = CONF.OBJECT,
+        validator = conf_vldt_set_headers,
     },
 };
 

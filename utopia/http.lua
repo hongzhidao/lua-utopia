@@ -20,6 +20,12 @@ function _M.handle(r)
     if (action.uri) then
         r.uri = action.uri;
     end
+
+    if (action.set_headers) then
+        for name, value in pairs(action.set_headers) do
+            r.set_header(name, value);
+        end
+    end
 end
 
 
@@ -35,6 +41,10 @@ function _M.init_conf(value)
 
     if (value.uri) then
         action.uri = value.uri;
+    end
+
+    if (value.set_headers) then
+        action.set_headers = value.set_headers;
     end
 end
 

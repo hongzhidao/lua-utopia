@@ -2,5 +2,9 @@
     "deny": [
         "127.0.0.2/32"
     ],
-    "uri": "/foo.html"
+    "uri": "/foo.html",
+    "set_headers": {
+        "X-Foo": "foo",
+        "X-Baz": "baz"
+    }
 }

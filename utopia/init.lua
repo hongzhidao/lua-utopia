@@ -1,7 +1,7 @@
 local _M = {};
 
-local conf = require('lua-utopia.conf');
-local http = require('lua-utopia.http');
+local conf = require('utopia.conf');
+local http = require('utopia.http');
 
 local config = ngx.shared.config;
 config:set('config_version', '0');

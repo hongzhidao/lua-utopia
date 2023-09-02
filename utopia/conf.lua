@@ -8,11 +8,37 @@ local CONF = {
 };
 
 
+local function check_type(member, value)
+    local types = {"number", "string", "array", "object"};
+
+    local expected = types[member.type];
+    local tvalue = type(value);
+
+    if (tvalue == "table") then
+        if (value[1]) then
+            tvalue = "array";
+        else
+            tvalue = "object";
+        end
+    end
+
+    if (tvalue ~= expected) then
+        return "expected " .. expected .. " but " .. tvalue;
+    end
+end
+
+
 local function conf_vldt_object(obj, members)
     for name, value in pairs(obj) do
         local member = members[name];
+
         if (member == nil) then
             return "unknown " .. name;
+        end
+
+        local err = check_type(member, value);
+        if (err) then
+            return err;
         end
 
         if (member.validator) then
